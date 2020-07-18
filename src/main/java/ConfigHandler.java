@@ -6,9 +6,9 @@ import java.util.Properties;
 public class ConfigHandler {
 
 
-        String token = "";
+        String prop = "";
         InputStream inputStream;
-        public String getTokenFromConfig() throws IOException {
+        public String getConfigProp(String propName) throws IOException {
             try {
                 Properties config = new Properties();
                 String configFileName = "config.properties";
@@ -21,7 +21,7 @@ public class ConfigHandler {
                     throw new FileNotFoundException("Property file '" + configFileName +"' not found in the classpath");
                 }
 
-                token = config.getProperty("token");
+                prop = config.getProperty(propName);
 
 
             }catch (Exception e) {
@@ -30,7 +30,7 @@ public class ConfigHandler {
                 inputStream.close();
             }
 
-            return token;
+            return prop;
 
     }
 
