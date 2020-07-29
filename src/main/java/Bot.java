@@ -7,14 +7,12 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
 
 public class Bot {
 
-    private static final Map<String, Command> commands = new HashMap<>();
+    private static final Map<String, Command> commands = CommandHandler.getCommands();
 
     public static void main(String[] args) throws IOException {
 
@@ -47,12 +45,6 @@ public class Bot {
 
 
         client.onDisconnect().block();
-        }
-
-        static {
-            commands.put("ping", event -> event.getMessage().getChannel()
-                .flatMap(channel -> channel.createMessage("Pong!"))
-                .then());
         }
 
     }
