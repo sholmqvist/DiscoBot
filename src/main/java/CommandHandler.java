@@ -5,6 +5,7 @@ public class CommandHandler {
 
     private static final Map<String, Command> commands = new HashMap<>();
 
+
     static {
         commands.put("ping", event -> event.getMessage().getChannel()
                 .flatMap(channel -> channel.createMessage("Pong!"))
@@ -18,6 +19,7 @@ public class CommandHandler {
                 .flatMap(channel -> channel.createMessage(Dice.diceRollEvent())
                 .then()));
     }
+
 
     public static Map<String, Command> getCommands(){
         return commands;
